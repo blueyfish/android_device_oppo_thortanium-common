@@ -196,9 +196,11 @@ PRODUCT_PACKAGES += \
     libbinder_shim
 
 # FM
+ifeq ($(BOARD_HAVE_QCOM_FM),true)
 PRODUCT_PACKAGES += \
     FMRadio \
     libfmjni
+endif
 
 # Gatekeeper
 PRODUCT_PACKAGES += \

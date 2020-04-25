@@ -41,6 +41,11 @@ write_headers "A57"
 # The standard common blobs
 write_makefiles "${MY_DIR}/proprietary-files.txt" true
 
+# Include FM blobs if needed
+printf "\n%s\n" "ifeq (\$(BOARD_HAVE_QCOM_FM),true)" >> "${PRODUCTMK}"
+write_makefiles "${MY_DIR}/proprietary-files-fm.txt" true
+printf "%s\n" "endif" >> "${PRODUCTMK}"
+
 cat << EOF >> "$ANDROIDMK"
 EOF
 

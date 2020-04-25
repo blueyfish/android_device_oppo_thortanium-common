@@ -58,8 +58,9 @@ TARGET_USES_HWC2 := true
 TARGET_FS_CONFIG_GEN := $(COMMON_PATH)/config.fs
 
 # FM
-BOARD_HAVE_QCOM_FM := true
+ifeq ($(BOARD_HAVE_QCOM_FM),true)
 TARGET_QCOM_NO_FM_FIRMWARE := true
+endif
 
 # GPS
 BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := default
@@ -74,6 +75,10 @@ DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := \
 
 DEVICE_MATRIX_FILE += hardware/qcom-caf/common/compatibility_matrix.xml
 DEVICE_MANIFEST_FILE += $(COMMON_PATH)/manifest.xml
+
+ifeq ($(BOARD_HAVE_QCOM_FM),true)
+DEVICE_MANIFEST_FILE += $(COMMON_PATH)/manifest_fm.xml
+endif
 
 # Init
 TARGET_INIT_VENDOR_LIB ?= //$(COMMON_PATH):init_oppo_thortanium
