@@ -39,6 +39,12 @@
   <!-- Indicates that a full bugreport should be triggered when wifi diagnostics detects an error on non-user (i.e debug) builds -->
     <bool translatable="false" name="config_wifi_diagnostics_bugreport_enabled">true</bool>
 
+    <!-- Indicate whether the verbose logging is always on -->
+    <!-- 0: verbose logging controlled by user
+         1: verbose logging on by default for userdebug
+         2: verbose logging on by default for all builds -->
+    <integer translatable="false" name="config_wifiVerboseLoggingAlwaysOnLevel">1</integer>
+
     <!-- Integer indicating maximum hardware supported client number of soft ap -->
     <integer translatable="false" name="config_wifiHardwareSoftapMaxClientCount">32</integer>
 
