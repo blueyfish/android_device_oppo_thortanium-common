@@ -26,6 +26,14 @@
             Id="0x00001081" Type="1" Enable="true" Timeout="2000"  Target="msm8953"
             Resources="0x40C00000, 0x1, 0x40800100, 0x40C, 0x40800000, 0x579" />
 
+    <!--excessive rendering boost-->
+        <!-- CPUBOOST_MIN_FREQ LITTLE Core resource opcode, value-->
+        <!-- GPU MIN_FREQUENCY resource opcode,value-->
+        <!-- Type="", excessive rendering boost -->
+        <Config
+            Id="0x000010A5" Enable="true" Timeout="0" Target="msm8953"
+            Resources="0x40800100, 1000, 0x4280C000, 596" />
+
         <!-- SCHEDBOOST resource opcode, value-->
         <!-- CPUBOOST_MIN_FREQ LITTLE Core resource opcode, value-->
         <!-- SCHED_SPILL_NR_RUN resource opcode, value-->
