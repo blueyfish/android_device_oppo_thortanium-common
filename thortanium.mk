@@ -182,7 +182,8 @@ PRODUCT_PACKAGES += \
 # DRM
 PRODUCT_PACKAGES += \
     android.hardware.drm@1.4.vendor \
-    android.hardware.drm-service.clearkey
+    android.hardware.drm-service.clearkey \
+    libprotobuf-cpp-full-3.9.1-vendorcompat
 
 # Filesystem
 PRODUCT_PACKAGES += \
