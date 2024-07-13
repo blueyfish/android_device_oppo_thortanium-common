@@ -167,9 +167,7 @@ PRODUCT_PACKAGES += \
     hwcomposer.$(TARGET_OPPO_PLATFORM)
 
 PRODUCT_PACKAGES += \
-    android.hardware.memtrack@1.0-impl \
-    android.hardware.memtrack@1.0-service \
-    memtrack.$(TARGET_OPPO_PLATFORM)
+    vendor.qti.hardware.memtrack-service
 
 PRODUCT_PACKAGES += \
     libqdMetaData.system \
