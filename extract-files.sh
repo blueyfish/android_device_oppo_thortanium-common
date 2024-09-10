@@ -73,6 +73,7 @@ function blob_fixup() {
             sed -i "s|qmi_client_send_msg_sync_with_shm|qmi_client_send_msg_sync_shim_fun|g" "${2}"
             ;;
         vendor/lib64/libwvhidl.so|vendor/lib64/mediadrm/libwvdrmengine.so)
+            grep -q libcrypto_shim.so "${2}" || "${PATCHELF}" --add-needed "libcrypto_shim.so" "${2}"
             sed -i 's|libprotobuf-cpp-lite-3.9.1.so|libprotobuf-cpp-full-3.9.1.so|g' "${2}"
             ;;
     esac

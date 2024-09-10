@@ -641,11 +641,11 @@ vendor/bin/hw/android.hardware.drm@1.3-service.widevine
 vendor/etc/init/android.hardware.drm@1.3-service.widevine.rc
 -vendor/etc/vintf/manifest/manifest_android.hardware.drm@1.3-service.widevine.xml
 vendor/lib/mediadrm/libwvdrmengine.so
-vendor/lib64/mediadrm/libwvdrmengine.so
+vendor/lib64/mediadrm/libwvdrmengine.so|02a47a8184126e7fb06a6501a537e53788c4a775
 vendor/lib64/libcpion.so
 vendor/lib64/libhdcpsrm.so
 vendor/lib64/liboemcrypto.so
-vendor/lib64/libwvhidl.so
+vendor/lib64/libwvhidl.so|6f5af4f455a7b22188d1eb54b9619ddba8a84502
 
 # WiGig
 vendor/lib64/libaoa.so
