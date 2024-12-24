@@ -194,7 +194,7 @@ PRODUCT_PACKAGES += \
 # Fingerprint
 PRODUCT_PACKAGES += \
     android.hardware.biometrics.fingerprint@2.0-service.oppo_thortanium \
-    libbinder_shim
+    libbinder_shim.vendor
 
 # FM
 ifeq ($(BOARD_HAVE_QCOM_FM),true)
