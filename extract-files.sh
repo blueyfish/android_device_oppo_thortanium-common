@@ -61,6 +61,9 @@ function blob_fixup() {
             "${PATCHELF}" --add-needed "libgui_shim.so" "${2}"
             "${PATCHELF}" --replace-needed "libqdMetaData.so" "libqdMetaData.system.so" "${2}"
             ;;
+        vendor/etc/seccomp_policy/atfwd@2.0.policy)
+            grep -q 'gettid: ' "${2}" || echo 'gettid: 1' >> "${2}"
+            ;;
         vendor/lib/libmmcamera_dbg.so)
             sed -i "s|/data/vendor/camera/|///data/vendor/qcam/|g" "${2}"
             ;;
