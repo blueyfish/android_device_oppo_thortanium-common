@@ -61,11 +61,6 @@ TARGET_USES_HWC2 := true
 # Filesystem
 TARGET_FS_CONFIG_GEN := $(COMMON_PATH)/config.fs
 
-# FM
-ifeq ($(TARGET_HAS_FM),true)
-BOARD_HAVE_QCOM_FM := true
-endif
-
 # GPS
 BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := default
 LOC_HIDL_VERSION := 4.0
