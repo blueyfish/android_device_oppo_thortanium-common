@@ -199,6 +199,8 @@ ifeq ($(TARGET_HAS_FM),true)
 PRODUCT_PACKAGES += \
     FMRadio \
     libfmjni
+
+$(call soong_config_set_bool,libfmjni,no_fm_firmware,true)
 endif
 
 # Gatekeeper

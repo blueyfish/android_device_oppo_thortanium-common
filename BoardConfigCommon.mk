@@ -64,7 +64,6 @@ TARGET_FS_CONFIG_GEN := $(COMMON_PATH)/config.fs
 # FM
 ifeq ($(TARGET_HAS_FM),true)
 BOARD_HAVE_QCOM_FM := true
-TARGET_QCOM_NO_FM_FIRMWARE := true
 endif
 
 # GPS
