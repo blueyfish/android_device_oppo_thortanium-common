@@ -80,7 +80,6 @@ endif
 
 # Init
 TARGET_INIT_VENDOR_LIB ?= //$(COMMON_PATH):init_oppo_thortanium
-TARGET_RECOVERY_DEVICE_MODULES ?= init_oppo_thortanium
 
 # Kernel
 BOARD_KERNEL_BASE := 0x80000000
