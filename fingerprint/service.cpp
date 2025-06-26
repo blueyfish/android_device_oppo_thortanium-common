@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-#define LOG_TAG "android.hardware.biometrics.fingerprint@2.1-service.A57"
+#define LOG_TAG "android.hardware.biometrics.fingerprint@2.1-service.oppo_thortanium"
 
 #include <android/log.h>
 #include <hidl/HidlSupport.h>

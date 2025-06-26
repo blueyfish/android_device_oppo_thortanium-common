@@ -19,7 +19,7 @@
 # for custom images on an earlier version.
 #
 
-BOOT_PATCH := $(DEVICE_PATH)/boot
+BOOT_PATCH := $(COMMON_PATH)/boot
 
 $(INSTALLED_BOOTIMAGE_TARGET): $(MKBOOTIMG) $(INTERNAL_BOOTIMAGE_FILES) $(INSTALLED_KERNEL_TARGET)
 	$(call pretty, "Target boot image: $@")

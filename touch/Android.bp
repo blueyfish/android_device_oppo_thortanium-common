@@ -14,9 +14,9 @@
 // limitations under the License.
 
 cc_binary {
-    name: "vendor.lineage.touch@1.0-service.A57",
-    init_rc: ["vendor.lineage.touch@1.0-service.A57.rc"],
-    vintf_fragments: ["vendor.lineage.touch@1.0-service.A57.xml"],
+    name: "vendor.lineage.touch@1.0-service.oppo_thortanium",
+    init_rc: ["vendor.lineage.touch@1.0-service.oppo_thortanium.rc"],
+    vintf_fragments: ["vendor.lineage.touch@1.0-service.oppo_thortanium.xml"],
     defaults: ["hidl_defaults"],
     relative_install_path: "hw",
     vendor: true,

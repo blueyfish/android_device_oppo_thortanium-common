@@ -1,16 +1,6 @@
 # All unpinned blobs below are extracted from daisy-user 10 QKQ1.191002.002 V11.0.21.0.QDLMIXM release-keys
-# CPH1701 Package version: CPH1701EX_11_A.36_181009
 # PAN Package version: Nokia/Panther_00WW/PAN_sprout:11/RKQ1.200928.002/00WW_3_240:user/release-keys
 # FP3 Package version: Fairphone/FP3/FP3:13/6.A.031.5/gms-fa7632b5:user/release-keys
-
-# ACDB - from CPH1701
-system/etc/acdbdata/16061/Bluetooth_cal.acdb:vendor/etc/acdbdata/MTP/MTP_Bluetooth_cal.acdb|850d4fa7ba66145bb4efc713d3c2bf78d4ef5df2
-system/etc/acdbdata/16061/General_cal.acdb:vendor/etc/acdbdata/MTP/MTP_General_cal.acdb|0d604afc047b080dcbb1043506e2d020853c3ad1
-system/etc/acdbdata/16061/Global_cal.acdb:vendor/etc/acdbdata/MTP/MTP_Global_cal.acdb|8e3421f309963ce1b218a5b391a04b62a2ce536c
-system/etc/acdbdata/16061/Handset_cal.acdb:vendor/etc/acdbdata/MTP/MTP_Handset_cal.acdb|81c1866bafdcd461c8b10e181126609844e15b53
-system/etc/acdbdata/16061/Hdmi_cal.acdb:vendor/etc/acdbdata/MTP/MTP_Hdmi_cal.acdb|278f402966b7a312f8b0f77285b164ea11ff63d7
-system/etc/acdbdata/16061/Headset_cal.acdb:vendor/etc/acdbdata/MTP/MTP_Headset_cal.acdb|ce9344781197c7df70e2e7c665a4cb1d8ebebd55
-system/etc/acdbdata/16061/Speaker_cal.acdb:vendor/etc/acdbdata/MTP/MTP_Speaker_cal.acdb|fe2289bbae4ed781493d1037dfbd78f3e3de552c
 
 # ADSP
 vendor/bin/adsprpcd
@@ -99,6 +89,22 @@ vendor/lib64/hw/vendor.qti.hardware.btconfigstore@2.0-impl.so|05e2d1fd44260cf603
 vendor/lib64/libbluetooth_audio_session_qti.so|7478f6d9bb38509bf1835665210b9d498ae6e482
 vendor/lib64/vendor.qti.hardware.bluetooth_sar@1.0.so|25b2ce43c28c274b15c3b683831c214e3efb531d
 vendor/lib64/vendor.qti.hardware.bluetooth_sar@1.1.so|117b74f1df4ee67297f431ae47d622bbb8f587ca
+
+# Camera - from FP3
+vendor/lib/libmmcamera_dbg.so|06fdc7557001012abe631f83eb219d404225528e|35c45dbf990b342d85bf3488a2615d887e1ae571
+
+# Camera firmware
+vendor/firmware/cpp_firmware_v1_10_0.fw
+vendor/firmware/cpp_firmware_v1_12_0.fw
+vendor/firmware/cpp_firmware_v1_1_1.fw
+vendor/firmware/cpp_firmware_v1_1_6.fw
+vendor/firmware/cpp_firmware_v1_2_0.fw
+vendor/firmware/cpp_firmware_v1_4_0.fw
+vendor/firmware/cpp_firmware_v1_5_0.fw
+vendor/firmware/cpp_firmware_v1_5_1.fw
+vendor/firmware/cpp_firmware_v1_5_2.fw
+vendor/firmware/cpp_firmware_v1_6_0.fw
+vendor/firmware/cpp_firmware_v1_8_0.fw
 
 # CNE - from FP3
 -vendor/app/CneApp/CneApp.apk|551d0e3251eeda3af8dfa8bb55cd83b858365db8
@@ -207,31 +213,6 @@ vendor/lib64/libsecureui.so
 vendor/lib64/libsecureui_svcsock.so
 vendor/lib64/libssd.so
 
-# Fingerprint - FPC - from CPH1701
-system/lib64/hw/fingerprint.msm8937.so:vendor/lib64/hw/fingerprint.msm8937.so|e5bda11ba1634777a33b896c37145723f4bedfd2|41a61bcb6853f997d16f5ddbe47af9216dcd6dce
-system/lib64/lib_fpc_tac_shared.so:vendor/lib64/lib_fpc_tac_shared.so|1e2ebfa28a378c0bd0d4d0f3836125623c84a31e|cf54ba9948fc2e3e82b723224733242a5aaa1176
-system/lib64/libalipay_factory.so:vendor/lib64/libalipay_factory.so|8637b01c206cc2b476e333f6e5549c032c8d238b|1e481a2ddd54fd8fde4fce2107696df189dc7b41
-
-# Fingerprint - Alipay firmware - from CPH1701
-system/etc/firmware/alipay.b00:vendor/firmware/alipay.b00|9dd173e4faceb2b276d4847dbb5b2a1f397de2e4
-system/etc/firmware/alipay.b01:vendor/firmware/alipay.b01|69f22449bfad7a40faed408eb348697f9dde6605
-system/etc/firmware/alipay.b02:vendor/firmware/alipay.b02|e2886279537ea48c80e3182eeef434c1eae2fede
-system/etc/firmware/alipay.b03:vendor/firmware/alipay.b03|a862f7334373dd04778983e2d44204ae9c65684b
-system/etc/firmware/alipay.b04:vendor/firmware/alipay.b04|b9d138bd786ba93efaebdf62aa8859f587255b02
-system/etc/firmware/alipay.b05:vendor/firmware/alipay.b05|648187fbf1a063bb4a637d99b2866c057ba99fcf
-system/etc/firmware/alipay.b06:vendor/firmware/alipay.b06|aaa8b57e75a45ec6193d18a601f7115613072b79
-system/etc/firmware/alipay.mdt:vendor/firmware/alipay.mdt|01232028fe96f9562f930cd27c8482eb462b4fd8
-
-# Fingerprint - FPC firmware - from CPH1701
-system/etc/firmware/fingerprint.b00:vendor/firmware/fingerprint.b00|22912d59d481d844b58079ed32a7e90af8a1bcaa
-system/etc/firmware/fingerprint.b01:vendor/firmware/fingerprint.b01|83d10cf370f12e99ed21a095bdf78640370625bb
-system/etc/firmware/fingerprint.b02:vendor/firmware/fingerprint.b02|b7f8565c88f65d0a974c52ba5edf921ece9625c5
-system/etc/firmware/fingerprint.b03:vendor/firmware/fingerprint.b03|f5fb7954df0af21f55ac00769c400c0ff90b9420
-system/etc/firmware/fingerprint.b04:vendor/firmware/fingerprint.b04|d4924a57836d062463aa4caaa497669f03de372c
-system/etc/firmware/fingerprint.b05:vendor/firmware/fingerprint.b05|74a2339683cb21e20267c092900ad9c942b816a7
-system/etc/firmware/fingerprint.b06:vendor/firmware/fingerprint.b06|341f188722aab317d78fdbdfdd0fbe52b2c0f25f
-system/etc/firmware/fingerprint.mdt:vendor/firmware/fingerprint.mdt|03a3bb29a26f97dda8abdb3b7a1533e0cc1b10f5
-
 # FM - from PAN
 system_ext/lib64/fm_helium.so|55ef376cc802574df92025bebaba1cebcc74a918
 system_ext/lib64/libfm-hci.so|0cfbf3d84724428721973cc7ad22f5d1e1368591
@@ -269,7 +250,7 @@ vendor/lib64/vendor.qti.gnss@3.0-service.so
 vendor/lib64/vendor.qti.gnss@3.0.so
 
 # Gatekeeper - from PAN - T89571AA2-user-10-QKQ1.191008.001-00WW_2_330-release-keys
-vendor/lib64/hw/gatekeeper.msm8937.so|500e503239be65dfdd6c8c201d7e0679b7a27fa8
+vendor/lib64/hw/gatekeeper.msm8937.so:vendor/lib64/hw/gatekeeper.qcom.so|500e503239be65dfdd6c8c201d7e0679b7a27fa8
 
 # Graphics
 vendor/lib/egl/eglSubDriverAndroid.so
@@ -278,7 +259,7 @@ vendor/lib/egl/libGLESv1_CM_adreno.so
 vendor/lib/egl/libGLESv2_adreno.so
 vendor/lib/egl/libQTapGLES.so
 vendor/lib/egl/libq3dtools_adreno.so
-vendor/lib/hw/vulkan.msm8953.so:vendor/lib/hw/vulkan.msm8937.so
+vendor/lib/hw/vulkan.msm8953.so:vendor/lib/hw/vulkan.qcom.so
 vendor/lib/libC2D2.so
 vendor/lib/libCB.so
 vendor/lib/libOpenCL.so
@@ -298,7 +279,7 @@ vendor/lib64/egl/libGLESv1_CM_adreno.so
 vendor/lib64/egl/libGLESv2_adreno.so
 vendor/lib64/egl/libQTapGLES.so
 vendor/lib64/egl/libq3dtools_adreno.so
-vendor/lib64/hw/vulkan.msm8953.so:vendor/lib64/hw/vulkan.msm8937.so
+vendor/lib64/hw/vulkan.msm8953.so:vendor/lib64/hw/vulkan.qcom.so
 vendor/lib64/libC2D2.so
 vendor/lib64/libCB.so
 vendor/lib64/libOpenCL.so
@@ -336,7 +317,7 @@ vendor/firmware/a530_pfp.fw
 vendor/firmware/a530_pm4.fw
 
 # Keystore - from PAN - T89571AA2-user-10-QKQ1.191008.001-00WW_2_330-release-keys
-vendor/lib64/hw/keystore.msm8937.so|7ae2963368ab1ce7e0b219e89a3e0627144e7b27
+vendor/lib64/hw/keystore.msm8937.so:vendor/lib64/hw/keystore.qcom.so|7ae2963368ab1ce7e0b219e89a3e0627144e7b27
 
 # Latency
 product/framework/vendor.qti.hardware.data.latency-V1.0-java.jar
@@ -347,7 +328,7 @@ vendor/lib64/vendor.qti.hardware.data.latency@1.0.so
 vendor/lib64/vendor.qti.latency@2.0.so
 
 # Listen
-vendor/lib/hw/sound_trigger.primary.msm8953.so:vendor/lib/hw/sound_trigger.primary.msm8937.so
+vendor/lib/hw/sound_trigger.primary.msm8953.so:vendor/lib/hw/sound_trigger.primary.qcom.so
 vendor/lib/libadpcmdec.so
 vendor/lib/libgcs-calwrapper.so
 vendor/lib/libgcs-ipc.so
@@ -356,7 +337,7 @@ vendor/lib/libgcs.so
 vendor/lib/liblistenjni.so
 vendor/lib/liblistensoundmodel2.so
 vendor/lib/libsmwrapper.so
-vendor/lib64/hw/sound_trigger.primary.msm8953.so:vendor/lib64/hw/sound_trigger.primary.msm8937.so
+vendor/lib64/hw/sound_trigger.primary.msm8953.so:vendor/lib64/hw/sound_trigger.primary.qcom.so
 vendor/lib64/libgcs-calwrapper.so
 vendor/lib64/libgcs-ipc.so
 vendor/lib64/libgcs-osal.so
@@ -579,11 +560,6 @@ vendor/radio/qcril_database/upgrade/7_version_update_ecc_table.sql|5d080c737f7aa
 vendor/radio/qcril_database/upgrade/8_version_update_ecc_table.sql|a0603a5c46e8e67f78bdb42f2b246ecc6a37cecd
 vendor/radio/qcril_database/upgrade/9_version_update_ecc_table.sql|4701219a79190995eda651e5c45e11c9b111a478
 
-# Radio - from CPH1701
-system/bin/rmt_storage:vendor/bin/rmt_storage|a13e246259eb1e5f56668428cb6951d8a75e0737
-vendor/lib64/libqmiservices.so:vendor/lib64/libQmiservices.so|94c393eef69fe7bbc52efb1804163147c060f912
-vendor/lib64/libril-qc-qmi-1.so|918117daaa09056970d21ec37698a8447f09dffd|f94928c47fd903349ed696ed1d5c01f7031a686c
-
 # Radio - IMS - from FP3
 system_ext/lib64/lib-imscamera.so|8170256dbf9120ff05f193ba937c718d9c580881
 system_ext/lib64/lib-imsvideocodec.so|3e364441c9dce63d74fbc78c4781a84080513d8a|e09b2bba52d2de6975772228745203d8691e06b8
@@ -646,9 +622,9 @@ vendor/lib64/vendor.qti.imsrtpservice@3.0.so|460e589128fce0b0e83bb3c75aa32f7e1a9
 # Sensors - from FP3
 vendor/bin/sensors.qti|cba682ce9a06fd2e1fbc3e3d63f9df524252b34d
 vendor/etc/sensors/hals.conf|bf3677cbfa5ce5735662e8c259cb027969f65c87
-vendor/lib/hw/activity_recognition.msm8953.so:vendor/lib/hw/activity_recognition.msm8937.so|99ba43ace06eae105068bc2131cb1dc448160577
+vendor/lib/hw/activity_recognition.msm8953.so:vendor/lib/hw/activity_recognition.qcom.so|99ba43ace06eae105068bc2131cb1dc448160577
 vendor/lib/libsensor1.so|59289e1283feea150799fd4f60b0dd146f912990
-vendor/lib64/hw/activity_recognition.msm8953.so:vendor/lib64/hw/activity_recognition.msm8937.so|6dedb46de4d3bbafc02430bac942b1ec78f915df
+vendor/lib64/hw/activity_recognition.msm8953.so:vendor/lib64/hw/activity_recognition.qcom.so|6dedb46de4d3bbafc02430bac942b1ec78f915df
 vendor/lib64/libsensor1.so|f78638f1a87b99284e7aa2daa47e44adced55b70
 
 # Sensors - SSC - from FP3
@@ -656,9 +632,6 @@ vendor/lib/libsensor_reg.so|37916892236519fd374c7fca3b04c3f4940e697e
 vendor/lib/sensors.ssc.so|30d8799c92db27699c90e12243447d7d999fbc85
 vendor/lib64/libsensor_reg.so|c5ba27049d5f36b0877358c154de67080b66e7de
 vendor/lib64/sensors.ssc.so|aeab604388f7e41e2da7dad76bf22bcf47a632db
-
-# Sensors config - from CPH1701
-system/etc/sensors/sensor_def_16061.conf:vendor/etc/sensors/sensor_def_qcomdev.conf|ff046f6a8a6b2a2e1b47c10e6985ce78ee8e9f92
 
 # Thermal
 vendor/bin/thermal-engine
