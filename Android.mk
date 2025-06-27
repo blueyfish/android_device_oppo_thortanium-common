@@ -26,4 +26,18 @@ $(DSP_MOUNT_POINT): $(LOCAL_INSTALLED_MODULE)
 
 ALL_DEFAULT_INSTALLED_MODULES += $(FIRMWARE_MOUNT_POINT) $(DSP_MOUNT_POINT)
 
+# Sound trigger HAL uses direct path with TARGET_BOARD_PLATFORM
+# instead of loading with just module ID, so we have to create
+# a compile time symlink.
+SOUND_TRIGGER_HAL_SYMLINK := \
+	$(TARGET_OUT_VENDOR)/lib/hw/sound_trigger.primary.$(TARGET_BOARD_PLATFORM).so \
+	$(TARGET_OUT_VENDOR)/lib64/hw/sound_trigger.primary.$(TARGET_BOARD_PLATFORM).so
+$(SOUND_TRIGGER_HAL_SYMLINK): $(LOCAL_INSTALLED_MODULE)
+	@echo "Sound trigger HAL link: $@"
+	@mkdir -p $(dir $@)
+	@rm -rf $@
+	$(hide) ln -s $(subst $(TARGET_OUT_VENDOR),/vendor,$(subst $(TARGET_BOARD_PLATFORM),qcom,$@)) $@
+
+ALL_DEFAULT_INSTALLED_MODULES += $(SOUND_TRIGGER_HAL_SYMLINK)
+
 endif
