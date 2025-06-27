@@ -8,9 +8,11 @@ cc_library_static {
     name: "libinit_oppo_thortanium",
     srcs: [
         "libinit_dalvik_heap.cpp",
+        "libinit_oppo_version.cpp",
         "libinit_utils.cpp",
         "libinit_variant.cpp",
     ],
+    include_dirs: ["system/libbase/include"],
     export_include_dirs: ["include"],
     recovery_available: true,
 }
