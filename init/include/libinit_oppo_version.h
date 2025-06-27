@@ -10,3 +10,4 @@
 
 int32_t ReadProjectVersion();
 int32_t ReadOperatorName();
+int32_t ReadPcbVersion();
