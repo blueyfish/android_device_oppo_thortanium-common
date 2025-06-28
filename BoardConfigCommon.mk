@@ -133,6 +133,7 @@ TARGET_USES_INTERACTION_BOOST := true
 
 # Platform
 BOARD_USES_QCOM_HARDWARE := true
+TARGET_ENFORCES_QSSI := true
 
 # Properties
 TARGET_ODM_PROP += $(COMMON_PATH)/odm.prop
