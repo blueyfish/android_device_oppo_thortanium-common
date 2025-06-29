@@ -59,6 +59,9 @@ function blob_fixup() {
             "${PATCHELF}" --add-needed "libgui_shim.so" "${2}"
             "${PATCHELF}" --replace-needed "libqdMetaData.so" "libqdMetaData.system.so" "${2}"
             ;;
+        vendor/lib/libmmcamera_dbg.so)
+            sed -i "s|/data/vendor/camera/|///data/vendor/qcam/|g" "${2}"
+            ;;
         vendor/lib64/libril-qc-hal-qmi.so)
             for v in 1.{0..2}; do
                 sed -i "s|android.hardware.radio.config@${v}.so|android.hardware.radio.c_shim@${v}.so|g" "${2}"
