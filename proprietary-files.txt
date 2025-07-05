@@ -285,10 +285,6 @@ vendor/lib64/libsdmextension.so|7da7184ef43d36741410acf8c7628cf88fb53cab
 vendor/lib64/libtinyxml2_1.so|92101861d95cbdf9625d192d0b2295baa5960b68
 
 # Graphics firmware - from PAN
-vendor/firmware/a506_zap.b00|21d74ee137e4096c2ffcd6f2545b5b2f8f384efa
-vendor/firmware/a506_zap.b01|26835d4347de71bb970683ed2615a45349c05938
-vendor/firmware/a506_zap.b02|3e301fa5905acd05f15836959595791c1241a017
-vendor/firmware/a506_zap.mdt|6d1ce9df63a03fde364898ff9fbf313b389e0b62
 vendor/firmware/a530_pfp.fw|35b72dce880191ff087af2524205afce40ea8c97
 vendor/firmware/a530_pm4.fw|b1cf625b5552b99839687f479c124ac5daca2ca2
 
