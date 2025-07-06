@@ -28,7 +28,7 @@ include $(CLEAR_VARS)
 LOCAL_MODULE       := fstab.qcom
 LOCAL_MODULE_TAGS  := optional
 LOCAL_MODULE_CLASS := ETC
-LOCAL_SRC_FILES    := etc/fstab.qcom
+LOCAL_SRC_FILES    := etc/fstab_$(TARGET_BOARD_PLATFORM).qcom
 LOCAL_MODULE_PATH  := $(TARGET_OUT_VENDOR_ETC)
 include $(BUILD_PREBUILT)
 
@@ -37,7 +37,7 @@ LOCAL_MODULE := fstab_ramdisk.qcom
 LOCAL_MODULE_STEM := fstab.qcom
 LOCAL_MODULE_TAGS := optional
 LOCAL_MODULE_CLASS := ETC
-LOCAL_SRC_FILES := etc/fstab.qcom
+LOCAL_SRC_FILES := etc/fstab_$(TARGET_BOARD_PLATFORM).qcom
 LOCAL_MODULE_PATH := $(TARGET_RAMDISK_OUT)
 include $(BUILD_PREBUILT)
 
