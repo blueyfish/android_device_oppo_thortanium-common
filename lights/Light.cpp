@@ -26,6 +26,8 @@
 
 const static std::string kLcdBacklightPath = "/sys/class/leds/lcd-backlight/brightness";
 const static std::string kLcdMaxBacklightPath = "/sys/class/leds/lcd-backlight/max_brightness";
+const static std::string kButtonBacklightPath = "/sys/class/leds/button-backlight/brightness";
+
 const static std::string kWhiteLedPath = "/sys/class/leds/white/brightness";
 const static std::string kWhiteBlinkPath = "/sys/class/leds/white/device/blink";
 const static std::string kWhiteFreqPath = "/sys/class/leds/white/device/grpfreq";
@@ -84,6 +86,14 @@ Light::Light() {
             [](const LightState& state) { set(kLcdBacklightPath, getBrightness(state)); });
     mLights.emplace(Type::BATTERY, std::bind(&Light::handleWhiteLed, this, std::placeholders::_1, 2));
     mLights.emplace(Type::NOTIFICATIONS, std::bind(&Light::handleWhiteLed, this, std::placeholders::_1, 1));
+
+    if (!access(kButtonBacklightPath.c_str(), F_OK)) {
+        mLights.emplace(Type::BUTTONS,
+                [](const LightState& state) { set(kButtonBacklightPath, getBrightness(state)); });
+    } else {
+        LOG(WARNING) << "Failed to open kButtonBacklightPath: " << kButtonBacklightPath << ", error=" << errno
+                     << " (" << strerror(errno) << ")";
+    }
 }
 
 void Light::handleWhiteLed(const LightState& state, size_t index) {
