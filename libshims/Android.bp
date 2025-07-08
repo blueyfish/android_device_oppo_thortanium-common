@@ -29,20 +29,3 @@ cc_library_shared {
         "libutils",
     ],
 }
-
-cc_library_shared {
-    name: "libshims_legacy_ril",
-    proprietary: true,
-    defaults: ["hidl_defaults"],
-    srcs: [
-        "libshims_legacy_ril.cpp",
-    ],
-    cflags: [
-        "-Werror",
-        "-Wextra",
-        "-Wall",
-    ],
-    shared_libs: [
-        "libutils",
-    ],
-}

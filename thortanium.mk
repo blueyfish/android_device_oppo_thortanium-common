@@ -354,10 +354,6 @@ PRODUCT_PACKAGES += \
     libxml2
 
 PRODUCT_PACKAGES += \
-    libshims_legacy_ril \
-    legacy_rild
-
-PRODUCT_PACKAGES += \
     android.hardware.radio.c_shim@1.0 \
     android.hardware.radio.c_shim@1.1 \
     android.hardware.radio.c_shim@1.2 \
