@@ -27,9 +27,16 @@ namespace V1_0 {
 namespace implementation {
 
 constexpr const char kControlPath[] = "/proc/touchpanel/touchkey_enable";
+constexpr const char kControlPath2[] = "/proc/touchkey/key_enable";
 
 KeyDisabler::KeyDisabler() {
-    mHasKeyDisabler = !access(kControlPath, F_OK);
+    const char *kListControlPath[] = {kControlPath, kControlPath2};
+    for (auto path : kListControlPath) {
+        if (!access(path, F_OK)) {
+            mHasKeyDisabler = true;
+            mControlPath = path;
+        }
+    }
 }
 
 // Methods from ::vendor::lineage::touch::V1_0::IKeyDisabler follow.
@@ -38,8 +45,8 @@ Return<bool> KeyDisabler::isEnabled() {
 
     if (!mHasKeyDisabler) return false;
 
-    if (!android::base::ReadFileToString(kControlPath, &buf)) {
-        LOG(ERROR) << "Failed to read " << kControlPath;
+    if (!android::base::ReadFileToString(mControlPath, &buf)) {
+        LOG(ERROR) << "Failed to read " << mControlPath;
         return false;
     }
 
@@ -49,8 +56,8 @@ Return<bool> KeyDisabler::isEnabled() {
 Return<bool> KeyDisabler::setEnabled(bool enabled) {
     if (!mHasKeyDisabler) return false;
 
-    if (!android::base::WriteStringToFile((enabled ? "0" : "1"), kControlPath)) {
-        LOG(ERROR) << "Failed to write " << kControlPath;
+    if (!android::base::WriteStringToFile((enabled ? "0" : "1"), mControlPath)) {
+        LOG(ERROR) << "Failed to write " << mControlPath;
         return false;
     }
 

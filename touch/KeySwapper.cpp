@@ -27,9 +27,16 @@ namespace V1_0 {
 namespace implementation {
 
 constexpr const char kControlPath[] = "/proc/touchpanel/touchkey_reverse_enable";
+constexpr const char kControlPath2[] = "/proc/touchkey/key_rep";
 
 KeySwapper::KeySwapper() {
-    mHasKeySwapper = !access(kControlPath, F_OK);
+    const char *kListControlPath[] = {kControlPath, kControlPath2};
+    for (auto path : kListControlPath) {
+        if (!access(path, F_OK)) {
+            mHasKeySwapper = true;
+            mControlPath = path;
+        }
+    }
 }
 
 // Methods from ::vendor::lineage::touch::V1_0::IKeySwapper follow.
@@ -38,8 +45,8 @@ Return<bool> KeySwapper::isEnabled() {
 
     if (!mHasKeySwapper) return false;
 
-    if (!android::base::ReadFileToString(kControlPath, &buf)) {
-        LOG(ERROR) << "Failed to read " << kControlPath;
+    if (!android::base::ReadFileToString(mControlPath, &buf)) {
+        LOG(ERROR) << "Failed to read " << mControlPath;
         return false;
     }
 
@@ -49,8 +56,8 @@ Return<bool> KeySwapper::isEnabled() {
 Return<bool> KeySwapper::setEnabled(bool enabled) {
     if (!mHasKeySwapper) return false;
 
-    if (!android::base::WriteStringToFile((enabled ? "1" : "0"), kControlPath)) {
-        LOG(ERROR) << "Failed to write " << kControlPath;
+    if (!android::base::WriteStringToFile((enabled ? "1" : "0"), mControlPath)) {
+        LOG(ERROR) << "Failed to write " << mControlPath;
         return false;
     }
 
