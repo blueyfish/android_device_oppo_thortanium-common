@@ -81,12 +81,11 @@ static uint32_t getBrightness(const LightState& state) {
 }
 
 Light::Light() {
-    mLights.emplace(Type::ATTENTION, std::bind(&Light::handleWhiteLed, this, std::placeholders::_1, 0));
+    // LCD backlight
     mLights.emplace(Type::BACKLIGHT,
             [](const LightState& state) { set(kLcdBacklightPath, getBrightness(state)); });
-    mLights.emplace(Type::BATTERY, std::bind(&Light::handleWhiteLed, this, std::placeholders::_1, 2));
-    mLights.emplace(Type::NOTIFICATIONS, std::bind(&Light::handleWhiteLed, this, std::placeholders::_1, 1));
 
+    // Button backlight
     if (!access(kButtonBacklightPath.c_str(), F_OK)) {
         mLights.emplace(Type::BUTTONS,
                 [](const LightState& state) { set(kButtonBacklightPath, getBrightness(state)); });
@@ -94,6 +93,11 @@ Light::Light() {
         LOG(WARNING) << "Failed to open kButtonBacklightPath: " << kButtonBacklightPath << ", error=" << errno
                      << " (" << strerror(errno) << ")";
     }
+
+    // White LED
+    mLights.emplace(Type::ATTENTION, std::bind(&Light::handleWhiteLed, this, std::placeholders::_1, 0));
+    mLights.emplace(Type::BATTERY, std::bind(&Light::handleWhiteLed, this, std::placeholders::_1, 2));
+    mLights.emplace(Type::NOTIFICATIONS, std::bind(&Light::handleWhiteLed, this, std::placeholders::_1, 1));
 }
 
 void Light::handleWhiteLed(const LightState& state, size_t index) {
