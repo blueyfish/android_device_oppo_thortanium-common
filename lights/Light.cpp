@@ -26,6 +26,8 @@
 
 const static std::string kLcdBacklightPath = "/sys/class/leds/lcd-backlight/brightness";
 const static std::string kLcdMaxBacklightPath = "/sys/class/leds/lcd-backlight/max_brightness";
+const static std::string kExtLcdBacklightPath = "/sys/class/backlight/lm3697/brightness";
+const static std::string kExtLcdMaxBacklightPath = "/sys/class/backlight/lm3697/max_brightness";
 const static std::string kButtonBacklightPath = "/sys/class/leds/button-backlight/brightness";
 
 const static std::string kWhiteLedPath = "/sys/class/leds/white/brightness";
@@ -34,6 +36,7 @@ const static std::string kWhiteFreqPath = "/sys/class/leds/white/device/grpfreq"
 const static std::string kWhitePwmPath = "/sys/class/leds/white/device/grppwm";
 
 static constexpr int kLcdMaxBacklightDefault = 255;
+static constexpr int kExtLcdMaxBacklightDefault = 2047;
 static constexpr int kWhiteLedMaxBrightness = 24; // Observed max brightness
 
 namespace android {
@@ -83,7 +86,12 @@ static uint32_t getBrightness(const LightState& state) {
 
 Light::Light() {
     // LCD backlight
-    mLcdMaxBacklight = get(kLcdMaxBacklightPath, kLcdMaxBacklightDefault);
+    if (!access(kExtLcdBacklightPath.c_str(), F_OK))
+        mLcdBacklight = std::make_pair(kExtLcdBacklightPath,
+                                       get(kExtLcdMaxBacklightPath, kExtLcdMaxBacklightDefault));
+    else
+        mLcdBacklight = std::make_pair(kLcdBacklightPath,
+                                       get(kLcdMaxBacklightPath, kLcdMaxBacklightDefault));
     mLights.emplace(Type::BACKLIGHT, std::bind(&Light::setLcdBacklight, this, std::placeholders::_1));
 
     // Button backlight
@@ -168,13 +176,13 @@ void Light::setLcdBacklight(const LightState& state) {
 
     // If max panel brightness is not the default (255),
     // apply linear scaling across the accepted range.
-    if (mLcdMaxBacklight != kLcdMaxBacklightDefault) {
+    if (mLcdBacklight.second != kLcdMaxBacklightDefault) {
         int old_brightness = brightness;
-        brightness = brightness * mLcdMaxBacklight / kLcdMaxBacklightDefault;
+        brightness = brightness * mLcdBacklight.second / kLcdMaxBacklightDefault;
         LOG(VERBOSE) << "scaling brightness " << old_brightness << " => " << brightness;
     }
 
-    set(kLcdBacklightPath, brightness);
+    set(mLcdBacklight.first, brightness);
 }
 
 Return<void> Light::getSupportedTypes(getSupportedTypes_cb _hidl_cb) {

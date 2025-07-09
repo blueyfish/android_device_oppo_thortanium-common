@@ -2,6 +2,10 @@ on init
     # LCD backlight
     chown system system /sys/class/leds/lcd-backlight/max_brightness
 
+    # LM3697 LCD backlight
+    chown system system /sys/class/backlight/lm3697/brightness
+    chown system system /sys/class/backlight/lm3697/max_brightness
+
     # White light
     chown system system /sys/class/leds/white/brightness
     chown system system /sys/class/leds/white/device/blink

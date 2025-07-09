@@ -25,11 +25,12 @@
 /(vendor|system/vendor)/usr/idc(/.*)?                                       u:object_r:vendor_idc_file:s0
 /(vendor|system/vendor)/usr/keylayout(/.*)?                                 u:object_r:vendor_keylayout_file:s0
 
-# LED
-/sys/devices/platform/soc/[a-z0-9]+\.i2c/i2c-[0-9]/[0-9]-[a-z0-9]+/leds(/.*)?        u:object_r:sysfs_leds:s0
-/sys/devices/platform/soc/[a-z0-9]+\.i2c/i2c-[0-9]/[0-9]-[a-z0-9]+/blink             u:object_r:sysfs_leds:s0
-/sys/devices/platform/soc/[a-z0-9]+\.i2c/i2c-[0-9]/[0-9]-[a-z0-9]+/grpfreq           u:object_r:sysfs_leds:s0
-/sys/devices/platform/soc/[a-z0-9]+\.i2c/i2c-[0-9]/[0-9]-[a-z0-9]+/grppwm            u:object_r:sysfs_leds:s0
+# Lights
+/sys/devices/platform/soc/[a-z0-9]+\.i2c/i2c-[0-9]/[0-9]-[0-9a-f]+/backlight/lm3697(/.*)?   u:object_r:sysfs_leds:s0
+/sys/devices/platform/soc/[a-z0-9]+\.i2c/i2c-[0-9]/[0-9]-[a-z0-9]+/leds(/.*)?               u:object_r:sysfs_leds:s0
+/sys/devices/platform/soc/[a-z0-9]+\.i2c/i2c-[0-9]/[0-9]-[a-z0-9]+/blink                    u:object_r:sysfs_leds:s0
+/sys/devices/platform/soc/[a-z0-9]+\.i2c/i2c-[0-9]/[0-9]-[a-z0-9]+/grpfreq                  u:object_r:sysfs_leds:s0
+/sys/devices/platform/soc/[a-z0-9]+\.i2c/i2c-[0-9]/[0-9]-[a-z0-9]+/grppwm                   u:object_r:sysfs_leds:s0
 
 # NV backup
 /data/opponvitems(/.*)?                                                     u:object_r:nv_data_file:s0

@@ -45,7 +45,7 @@ class Light : public ILight {
     void setLcdBacklight(const LightState& state);
     void handleWhiteLed(const LightState& state, size_t index);
 
-    uint32_t mLcdMaxBacklight;
+    std::pair<std::string, uint32_t> mLcdBacklight;
 
     std::mutex mLock;
     std::unordered_map<Type, std::function<void(const LightState&)>> mLights;
