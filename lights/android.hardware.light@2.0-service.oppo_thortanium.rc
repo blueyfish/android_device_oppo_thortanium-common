@@ -1,4 +1,7 @@
 on init
+    # LCD backlight
+    chown system system /sys/class/leds/lcd-backlight/max_brightness
+
     # White light
     chown system system /sys/class/leds/white/brightness
     chown system system /sys/class/leds/white/device/blink

@@ -42,7 +42,10 @@ class Light : public ILight {
     Return<void> getSupportedTypes(getSupportedTypes_cb _hidl_cb) override;
 
   private:
+    void setLcdBacklight(const LightState& state);
     void handleWhiteLed(const LightState& state, size_t index);
+
+    uint32_t mLcdMaxBacklight;
 
     std::mutex mLock;
     std::unordered_map<Type, std::function<void(const LightState&)>> mLights;
