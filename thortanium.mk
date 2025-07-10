@@ -86,8 +86,6 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES += \
     libaudioroute \
-    libaacwrapper \
-    libaudio-resampler \
     libaudiopreprocessing \
     libqcomvisualizer \
     libqcomvoiceprocessing \
@@ -169,9 +167,9 @@ PRODUCT_PACKAGES += \
     memtrack.$(TARGET_OPPO_PLATFORM)
 
 PRODUCT_PACKAGES += \
-    libdisplayconfig \
     libqdMetaData.system \
-    libtinyxml
+    libtinyxml \
+    vendor.display.config@1.0.vendor
 
 # Doze
 PRODUCT_PACKAGES += \
