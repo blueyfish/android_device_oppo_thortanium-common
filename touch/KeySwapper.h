@@ -35,7 +35,7 @@ class KeySwapper : public IKeySwapper {
     Return<bool> setEnabled(bool enabled) override;
   private:
     bool mHasKeySwapper;
-    const char *mControlPath;
+    std::vector<const char *> mControlPaths;
 };
 
 }  // namespace implementation
