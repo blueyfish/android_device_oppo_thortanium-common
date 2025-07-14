@@ -26,6 +26,8 @@
  * IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+// Uncomment to log verbose logs
+#define LOG_NDEBUG 1
 #define LOG_TAG "LocSvc_utils_q"
 #include <stdio.h>
 #include <stdlib.h>
@@ -75,7 +77,7 @@ static msq_q_err_type convert_linked_list_err_type(linked_list_err_type linked_l
    case eLINKED_LIST_INSUFFICIENT_BUFFER:
       return eMSG_Q_INSUFFICIENT_BUFFER;
    case eLINKED_LIST_EMPTY:
-      return eMSG_Q_EMPTY;
+     return eMSG_Q_EMPTY;
 
    case eLINKED_LIST_FAILURE_GENERAL:
    default:
