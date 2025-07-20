@@ -66,6 +66,9 @@ function blob_fixup() {
             for v in 1.{0..2}; do
                 sed -i "s|android.hardware.radio.config@${v}.so|android.hardware.radio.c_shim@${v}.so|g" "${2}"
             done
+
+            "${PATCHELF_0_17_2}" --add-needed "libril-qcril-oppo.so" "${2}"
+            sed -i "s|qmi_client_send_msg_sync_with_shm|qmi_client_send_msg_sync_shim_fun|g" "${2}"
             ;;
         vendor/lib64/libwvhidl.so|vendor/lib64/mediadrm/libwvdrmengine.so)
             sed -i 's|libprotobuf-cpp-lite-3.9.1.so|libprotobuf-cpp-full-3.9.1.so|g' "${2}"
