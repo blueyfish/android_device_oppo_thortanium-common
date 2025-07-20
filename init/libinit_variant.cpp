@@ -19,6 +19,6 @@ void set_variant_props(const variant_info_t variant) {
 
     property_override("ro.build.description", variant.build_description);
 
-    /* Oplus Specific */
-    property_override("ro.build.version.ota", variant.build_ota);
+    /* RIL Specific */
+    property_override("ro.vendor.radio.imei.sv", std::to_string(variant.imei_sv));
 }
