@@ -353,6 +353,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libshims_legacy_ril \
     libril-qcril-oppo \
+    legacy_rild.sh \
     legacy_rild
 
 PRODUCT_PACKAGES += \

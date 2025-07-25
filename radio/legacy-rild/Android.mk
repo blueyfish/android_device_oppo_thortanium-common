@@ -30,3 +30,12 @@ LOCAL_MODULE:= legacy_rild
 LOCAL_INIT_RC := legacy_rild.rc
 
 include $(BUILD_EXECUTABLE)
+
+# Extension script for retries
+include $(CLEAR_VARS)
+LOCAL_MODULE       := legacy_rild.sh
+LOCAL_MODULE_TAGS  := optional
+LOCAL_MODULE_CLASS := ETC
+LOCAL_SRC_FILES    := legacy_rild.sh
+LOCAL_MODULE_PATH  := $(TARGET_OUT_VENDOR_EXECUTABLES)
+include $(BUILD_PREBUILT)

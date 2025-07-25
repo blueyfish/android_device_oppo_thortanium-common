@@ -14,7 +14,14 @@ service vendor.legacy-ril-daemon2 /vendor/bin/hw/legacy_rild -c 2
     capabilities BLOCK_SUSPEND NET_ADMIN NET_RAW
     oneshot
 
+service vendor.legacy-ril-sh /vendor/bin/legacy_rild.sh
+    class main
+    user root
+    oneshot
+
 # Stop when IMEI is written
 on property:oppo.device.imeicache=*
+    stop vendor.legacy-ril-sh
     stop vendor.legacy-ril-daemon
     stop vendor.legacy-ril-daemon2
+    setprop vendor.radio.qcrild.enabled true

@@ -405,7 +405,7 @@ on property:persist.vendor.sys.rawdump_copy=1
 on property:persist.vendor.sys.rawdump_copy=0
     write /sys/kernel/dload/emmc_dload 0
 
-on property:init.svc.vendor.legacy-ril-daemon=stopped
+on property:vendor.radio.qcrild.enabled=true
     # Enable qcrild and data services
     enable vendor.qcrild
     enable vendor.qcrild2
