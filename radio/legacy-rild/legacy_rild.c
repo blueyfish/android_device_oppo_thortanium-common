@@ -44,9 +44,6 @@ extern char ril_service_name[MAX_SERVICE_NAME_LENGTH];
 extern void RIL_register (const RIL_RadioFunctions *callbacks);
 extern void rilc_thread_pool ();
 
-extern void RIL_register_socket (const RIL_RadioFunctions *(*rilUimInit)
-        (const struct RIL_Env *, int, char **), RIL_SOCKET_TYPE socketType, int argc, char **argv);
-
 extern void RIL_onRequestComplete(RIL_Token t, RIL_Errno e,
         void *response, size_t responselen);
 
@@ -78,8 +75,6 @@ int main(int argc, char **argv) {
     void *dlHandle;
     // Pointer to ril init function in vendor ril
     const RIL_RadioFunctions *(*rilInit)(const struct RIL_Env *, int, char **);
-    // Pointer to sap init function in vendor ril
-    const RIL_RadioFunctions *(*rilUimInit)(const struct RIL_Env *, int, char **);
     const char *err_str = NULL;
 
     // functions returned by ril init function in vendor ril
@@ -109,30 +104,12 @@ int main(int argc, char **argv) {
         exit(EXIT_FAILURE);
     }
 
-    dlerror(); // Clear any previous dlerror
-    rilUimInit =
-        (const RIL_RadioFunctions *(*)(const struct RIL_Env *, int, char **))
-        dlsym(dlHandle, "RIL_SAP_Init");
-    err_str = dlerror();
-    if (err_str) {
-        RLOGW("RIL_SAP_Init not defined or exported in %s: %s\n", RIL_LIB_NAME, err_str);
-    } else if (!rilUimInit) {
-        RLOGW("RIL_SAP_Init defined as null in %s. SAP Not usable\n", RIL_LIB_NAME);
-    }
-
     funcs = rilInit(&s_rilEnv, argc, argv);
     RLOGD("RIL_Init rilInit completed");
 
     RIL_register(funcs);
 
     RLOGD("RIL_Init RIL_register completed");
-
-    if (rilUimInit) {
-        RLOGD("RIL_register_socket started");
-        RIL_register_socket(rilUimInit, RIL_SAP_SOCKET, argc, argv);
-    }
-
-    RLOGD("RIL_register_socket completed");
 
     rilc_thread_pool();
 }
