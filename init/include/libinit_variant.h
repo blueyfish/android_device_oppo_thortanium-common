@@ -18,9 +18,6 @@ typedef struct variant_info {
     std::string model;
     std::string build_fingerprint;
     std::string build_description;
-
-    /* RIL Specific */
-    unsigned int imei_sv;
 } variant_info_t;
 
 void set_variant_props(const variant_info_t variant);
