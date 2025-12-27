@@ -14,9 +14,6 @@ on boot
     write /proc/touchpanel/gesture_enable 1
 
 service touch-hal-1-0 /vendor/bin/hw/vendor.lineage.touch@1.0-service.oppo_thortanium
-    interface vendor.lineage.touch@1.0::IKeyDisabler default
-    interface vendor.lineage.touch@1.0::IKeySwapper default
-    interface vendor.lineage.touch@1.0::ITouchscreenGesture default
     class hal
     user system
     group system
