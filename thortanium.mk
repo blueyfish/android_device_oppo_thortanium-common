@@ -135,6 +135,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     camera.$(TARGET_OPPO_PLATFORM) \
     vendor.qti.hardware.camera.device@1.0 \
+    libremosaic_daemon \
     libcamshim
 
 PRODUCT_PACKAGES += \
