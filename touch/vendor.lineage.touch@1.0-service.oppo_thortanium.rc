@@ -1,11 +1,13 @@
 on boot
     chown system system /proc/touchpanel/gesture_enable
+    chown system system /proc/touchpanel/glove_mode_enable
     chown system system /proc/touchpanel/touchkey_enable
     chown system system /proc/touchpanel/touchkey_reverse_enable
     chown system system /proc/touchkey/key_enable
     chown system system /proc/touchkey/key_rep
 
     chmod 664 /proc/touchpanel/gesture_enable
+    chmod 664 /proc/touchpanel/glove_mode_enable
     chmod 664 /proc/touchpanel/touchkey_enable
     chmod 664 /proc/touchpanel/touchkey_reverse_enable
     chmod 664 /proc/touchkey/key_enable
