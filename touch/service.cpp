@@ -45,23 +45,19 @@ int main() {
     android::hardware::configureRpcThreadpool(1, true /*callerWillJoin*/);
 
     if (gloveMode->registerAsService() != android::OK) {
-        LOG(ERROR) << "Cannot register glove HAL service.";
-        return 1;
+        LOG(WARNING) << "Cannot register glove HAL service.";
     }
 
     if (keyDisablerService->registerAsService() != OK) {
-        LOG(ERROR) << "Cannot register key disabler HAL service.";
-        return 1;
+        LOG(WARNING) << "Cannot register key disabler HAL service.";
     }
 
     if (keySwapperService->registerAsService() != OK) {
-        LOG(ERROR) << "Cannot register key swapper HAL service.";
-        return 1;
+        LOG(WARNING) << "Cannot register key swapper HAL service.";
     }
 
     if (gestureService->registerAsService() != OK) {
-        LOG(ERROR) << "Cannot register touchscreen gesture HAL service.";
-        return 1;
+        LOG(WARNING) << "Cannot register touchscreen gesture HAL service.";
     }
 
     LOG(INFO) << "Touchscreen HAL service ready.";
