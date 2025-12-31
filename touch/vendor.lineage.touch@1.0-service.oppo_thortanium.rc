@@ -13,8 +13,6 @@ on boot
     chmod 664 /proc/touchkey/key_enable
     chmod 664 /proc/touchkey/key_rep
 
-    write /proc/touchpanel/gesture_enable 1
-
 service vendor.touch-hal-1-0 /vendor/bin/hw/vendor.lineage.touch@1.0-service.oppo_thortanium
     class hal
     user system
