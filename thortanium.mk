@@ -324,10 +324,9 @@ PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/perf/$(TARGET_OPPO_PLATFORM)/targetconfig.xml:$(TARGET_COPY_OUT_VENDOR)/etc/perf/targetconfig.xml \
     $(COMMON_PATH)/configs/perf/$(TARGET_OPPO_PLATFORM)/targetresourceconfigs.xml:$(TARGET_COPY_OUT_VENDOR)/etc/perf/targetresourceconfigs.xml
 
-ifneq ($(filter msm8937,$(TARGET_OPPO_PLATFORM)),)
-PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/configs/perf/msm8937/perf-profile0.conf:$(TARGET_COPY_OUT_VENDOR)/etc/perf/perf-profile0.conf \
-    $(COMMON_PATH)/configs/perf/msm8937/perf-profile1.conf:$(TARGET_COPY_OUT_VENDOR)/etc/perf/perf-profile1.conf
+ifneq ($(filter msm8937 msm8952,$(TARGET_OPPO_PLATFORM)),)
+$(foreach f,$(wildcard $(COMMON_PATH)/configs/perf/$(TARGET_OPPO_PLATFORM)/perf-profile*.conf),\
+        $(eval PRODUCT_COPY_FILES += $(f):$(TARGET_COPY_OUT_VENDOR)/etc/perf/$(notdir $f)))
 endif
 
 # Power
