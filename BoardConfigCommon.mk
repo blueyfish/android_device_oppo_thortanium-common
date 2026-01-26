@@ -147,6 +147,9 @@ ENABLE_VENDOR_RIL_SERVICE := true
 # SEPolicy
 include device/qcom/sepolicy-legacy-um/SEPolicy.mk
 BOARD_VENDOR_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/vendor
+ifneq ($(TARGET_VENDOR_PARTITION),)
+BOARD_VENDOR_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/$(TARGET_VENDOR_PARTITION)_vendor
+endif
 
 # Treble
 BOARD_VNDK_VERSION := current
