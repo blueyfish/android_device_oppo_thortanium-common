@@ -150,6 +150,9 @@ vendor.service.qti.ims.enabled=1
 # RCS
 persist.rcs.supported=1
 
+# Sensors
+ro.vendor.sensors.wu=false
+
 # SoC
 ro.soc.manufacturer=Qualcomm
 
