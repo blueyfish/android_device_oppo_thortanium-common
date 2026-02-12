@@ -9,3 +9,4 @@ type proc_flashlight, fs_type, proc_type;
 type proc_oppo_camera, fs_type, proc_type;
 type proc_oppo_info, fs_type, proc_type;
 type proc_touchpanel, fs_type, proc_type;
+type sysfs_touchpanel, fs_type, sysfs_type;

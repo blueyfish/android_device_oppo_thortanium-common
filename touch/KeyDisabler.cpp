@@ -28,6 +28,7 @@ namespace implementation {
 
 constexpr const char kControlPath[] = "/proc/touchpanel/touchkey_enable";
 constexpr const char kControlPath2[] = "/proc/touchkey/key_enable";
+constexpr const char kControlPathKeys[] = "/sys/devices/platform/soc/soc:gpio_keys/disabled_keys";
 
 KeyDisabler::KeyDisabler() {
     if (!access(kControlPath, F_OK))
@@ -64,6 +65,12 @@ Return<bool> KeyDisabler::setEnabled(bool enabled) {
         ret.push_back(android::base::WriteStringToFile((enabled ? "0" : "1"), path));
         if (!ret.back())
             LOG(WARNING) << "Failed to write " << path;
+    }
+
+    if (!access(kControlPathKeys, F_OK)) {
+        ret.push_back(android::base::WriteStringToFile((enabled ? "102" : ""), kControlPathKeys));
+        if (!ret.back())
+            LOG(WARNING) << "Failed to read " << kControlPathKeys;
     }
 
     return !std::any_of(ret.begin(), ret.end(), [](int val) { return val; });
