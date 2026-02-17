@@ -25,3 +25,8 @@ on property:oppo.device.imeicache=*
     stop vendor.legacy-ril-daemon
     stop vendor.legacy-ril-daemon2
     setprop vendor.radio.qcrild.enabled true
+    setprop persist.vendor.radio.imeicache ${oppo.device.imeicache}
+
+# Check if IMEI is stored in persistent property
+on property:persist.vendor.radio.imeicache=*
+    setprop oppo.device.imeicache ${persist.vendor.radio.imeicache}
