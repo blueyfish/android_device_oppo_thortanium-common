@@ -28,5 +28,5 @@ on property:oppo.device.imeicache=*
     setprop persist.vendor.radio.imeicache ${oppo.device.imeicache}
 
 # Check if IMEI is stored in persistent property
-on property:persist.vendor.radio.imeicache=*
+on boot && property:persist.vendor.radio.imeicache=*
     setprop oppo.device.imeicache ${persist.vendor.radio.imeicache}
