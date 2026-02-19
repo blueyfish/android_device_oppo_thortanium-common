@@ -1,0 +1,17 @@
+//
+// Copyright (C) 2026 The LineageOS Project
+//
+// SPDX-License-Identifier: Apache-2.0
+//
+
+prebuilt_firmware {
+    name: "vooc_fw_4350mv.bin",
+    src: "vooc_fw_4350mv.bin",
+    vendor: true,
+}
+
+prebuilt_firmware {
+    name: "vooc_fw_4400mv.bin",
+    src: "vooc_fw_4400mv.bin",
+    vendor: true,
+}
