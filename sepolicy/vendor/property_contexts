@@ -32,6 +32,7 @@ sys.listeners.registered                u:object_r:vendor_tee_listener_prop:s0
 
 # RIL
 oppo.device.imeicache                   u:object_r:vendor_radio_prop:s0
+oppo.device.meidcache                   u:object_r:vendor_radio_prop:s0
 ctl.vendor.imsrcsd                      u:object_r:vendor_ctl_vendor_imsrcsservice_prop:s0
 
 # WiFi

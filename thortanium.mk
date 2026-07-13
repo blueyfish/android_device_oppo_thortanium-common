@@ -374,6 +374,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libshims_legacy_ril \
     libril-qcril-oppo \
+    oppo_reserve_decode \
     legacy_rild.sh \
     legacy_rild
 

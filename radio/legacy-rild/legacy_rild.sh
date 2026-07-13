@@ -8,6 +8,7 @@
 
 retry_sec=15
 
+# If failed, fetch from legacy RILD stack
 while [ -z "$(getprop oppo.device.imeicache)" ]; do
 	echo "Waiting for OPPO NV dump for IMEI..."
 	sleep $retry_sec

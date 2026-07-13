@@ -5,6 +5,7 @@ service vendor.legacy-ril-daemon /vendor/bin/hw/legacy_rild
     user root
     group radio cache inet misc audio sdcard_r sdcard_rw diag oem_2901 log
     capabilities BLOCK_SUSPEND NET_ADMIN NET_RAW
+    disabled
     oneshot
 
 service vendor.legacy-ril-daemon2 /vendor/bin/hw/legacy_rild -c 2
@@ -12,6 +13,7 @@ service vendor.legacy-ril-daemon2 /vendor/bin/hw/legacy_rild -c 2
     user root
     group radio cache inet misc audio sdcard_r sdcard_rw diag oem_2901 log
     capabilities BLOCK_SUSPEND NET_ADMIN NET_RAW
+    disabled
     oneshot
 
 service vendor.legacy-ril-sh /vendor/bin/legacy_rild.sh
@@ -27,6 +29,12 @@ on property:oppo.device.imeicache=*
     setprop vendor.radio.qcrild.enabled true
     setprop persist.vendor.radio.imeicache ${oppo.device.imeicache}
 
-# Check if IMEI is stored in persistent property
+on property:oppo.device.meidcache=*
+    setprop persist.vendor.radio.meidcache ${oppo.device.meidcache}
+
+# Check if IMEI/MEID is stored in persistent property
 on boot && property:persist.vendor.radio.imeicache=*
     setprop oppo.device.imeicache ${persist.vendor.radio.imeicache}
+
+on boot && property:persist.vendor.radio.meidcache=*
+    setprop oppo.device.meidcache ${persist.vendor.radio.meidcache}

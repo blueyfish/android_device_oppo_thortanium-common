@@ -1,0 +1,4 @@
+service vendor.oppo-reserve-decode /vendor/bin/oppo_reserve_decode
+    class main
+    user root
+    oneshot

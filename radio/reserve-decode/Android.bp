@@ -1,0 +1,24 @@
+//
+// Copyright (C) 2026 The LineageOS Project
+//
+// SPDX-License-Identifier: Apache-2.0
+//
+
+cc_binary {
+    name: "oppo_reserve_decode",
+    init_rc: ["oppo_reserve_decode.rc"],
+    proprietary: true,
+    defaults: ["hidl_defaults"],
+    srcs: [
+        "oppo_reserve_decode.cpp",
+    ],
+    cflags: [
+        "-Werror",
+        "-Wextra",
+        "-Wall",
+    ],
+    shared_libs: [
+        "libbase",
+        "libdl",
+    ],
+}

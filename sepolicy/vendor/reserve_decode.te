@@ -1,0 +1,13 @@
+type reserve_decode, domain;
+type reserve_decode_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(reserve_decode)
+
+# Allow reserve_decode to reach block devices in /dev/block.
+allow reserve_decode block_device:dir search;
+
+# Allow read access to reserve1 block device
+type reserve1_block_device, dev_type;
+allow reserve_decode reserve1_block_device:blk_file r_file_perms;
+
+# Allow setting radio property (IMEI/MEID)
+set_prop(reserve_decode, vendor_radio_prop)

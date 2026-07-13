@@ -19,6 +19,7 @@
 #define QMI_DMS_IMEISV_MAX_V01 255
 
 #define IMEI_PROP "oppo.device.imeicache"
+#define MEID_PROP "oppo.device.meidcache"
 #define IMEISV_PROP "ro.vendor.radio.imei.sv"
 
 using android::base::GetProperty;
@@ -49,43 +50,55 @@ extern "C" int qmi_client_send_msg_sync_shim_fun(void *user_handle, int msg_id,
 		void *resp_c_struct, int resp_c_struct_len,
 		int timeout_msecs)
 {
-	std::string prop;
+	std::string imei_prop, meid_prop;
 	sn_resp *response;
 
 	if (msg_id == 0x0025) { /* QMI_DMS_GET_DEVICE_SERIAL_NUMBERS_REQ_V01 */
 		response = (sn_resp *) resp_c_struct;
 
 		// Read from IMEI cache
-		prop = GetProperty(IMEI_PROP, "");
-		if (prop.empty()) {
+		imei_prop = GetProperty(IMEI_PROP, "");
+		if (imei_prop.empty()) {
 			LOG(ERROR) << IMEI_PROP << " is not set";
 			return QMI_INTERNAL_ERR;
 		}
 
-		// Set IMEI based on SIM slot
+		// Read from MEID cache
+		meid_prop = GetProperty(MEID_PROP, "");
+		if (meid_prop.empty()) {
+			LOG(ERROR) << MEID_PROP << " is not set";
+			return QMI_INTERNAL_ERR;
+		}
+
+		// Set IMEI/MEID based on SIM slot
 		int sim_slot = qmi_ril_get_sim_slot();
 		switch (sim_slot) {
 			case 0:
 				strcpy(response->imei,
-				       prop.substr(0, prop.find(",")).c_str());
+				       imei_prop.substr(0, imei_prop.find(",")).c_str());
+				strcpy(response->meid,
+					   meid_prop.substr(0, meid_prop.find(",")).c_str());
 				break;
 			case 1:
 				strcpy(response->imei,
-				       prop.substr(prop.find(",") + 1, prop.length()).c_str());
+				       imei_prop.substr(imei_prop.find(",") + 1, imei_prop.length()).c_str());
+				strcpy(response->meid,
+				       meid_prop.substr(meid_prop.find(",") + 1, meid_prop.length()).c_str());
 				break;
 			default:
 				LOG(ERROR) << "Unknown SIM slot " << sim_slot;
 				return QMI_INTERNAL_ERR;
 		}
-		response->imei_valid = true;
+		response->imei_valid = strlen(response->imei) > 0;
+		response->meid_valid = strlen(response->meid) > 0;
 
 		// Set IMEI SV after IMEI
-		prop = GetProperty(IMEISV_PROP, "");
-		if (prop.empty()) {
+		imei_prop = GetProperty(IMEISV_PROP, "");
+		if (imei_prop.empty()) {
 			LOG(ERROR) << IMEISV_PROP << " is not set";
 			return QMI_INTERNAL_ERR;
 		}
-		sprintf(response->imeisv_svn, "%x", atoi(prop.c_str()));
+		sprintf(response->imeisv_svn, "%x", atoi(imei_prop.c_str()));
 		response->imeisv_svn_valid = true;
 
 		// Respond as no error
