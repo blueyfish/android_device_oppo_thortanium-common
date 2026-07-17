@@ -126,8 +126,6 @@ PRODUCT_PACKAGES += \
 # Bluetooth
 PRODUCT_PACKAGES += \
     android.hardware.bluetooth@1.0.vendor \
-    vendor.qti.hardware.bluetooth_audio@2.0.vendor \
-    vendor.qti.hardware.bluetooth_audio@2.1.vendor \
     vendor.qti.hardware.btconfigstore@1.0.vendor \
     vendor.qti.hardware.btconfigstore@2.0.vendor
 
@@ -197,7 +195,7 @@ PRODUCT_PACKAGES += \
     libbinder_shim.vendor
 
 # FM
-ifeq ($(BOARD_HAVE_QCOM_FM),true)
+ifeq ($(TARGET_HAS_FM),true)
 PRODUCT_PACKAGES += \
     FMRadio \
     libfmjni

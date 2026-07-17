@@ -62,7 +62,8 @@ TARGET_USES_HWC2 := true
 TARGET_FS_CONFIG_GEN := $(COMMON_PATH)/config.fs
 
 # FM
-ifeq ($(BOARD_HAVE_QCOM_FM),true)
+ifeq ($(TARGET_HAS_FM),true)
+BOARD_HAVE_QCOM_FM := true
 TARGET_QCOM_NO_FM_FIRMWARE := true
 endif
 
@@ -79,8 +80,7 @@ DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := \
 
 DEVICE_MATRIX_FILE += hardware/qcom-caf/common/compatibility_matrix.xml
 DEVICE_MANIFEST_FILE += $(COMMON_PATH)/manifest.xml
-
-ifeq ($(BOARD_HAVE_QCOM_FM),true)
+ifeq ($(TARGET_HAS_FM),true)
 DEVICE_MANIFEST_FILE += $(COMMON_PATH)/manifest_fm.xml
 endif
 

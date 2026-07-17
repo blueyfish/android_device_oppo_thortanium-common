@@ -87,8 +87,6 @@ setup_vendor "${DEVICE_COMMON}" "${VENDOR_COMMON:-$VENDOR}" "${ANDROID_ROOT}" tr
 
 extract "${MY_DIR}/proprietary-files.txt" "${SRC}" \
         "${KANG}" --section "${SECTION}"
-extract "${MY_DIR}/proprietary-files-fm.txt" "${SRC}" \
-        "${KANG}" --section "${SECTION}"
 
 if [ -z "${ONLY_COMMON}" ] && [ -s "${MY_DIR}/../../${VENDOR}/${DEVICE}/proprietary-files.txt" ]; then
     # Reinitialize the helper for device
